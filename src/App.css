@@ -13,6 +13,11 @@
   }
 }
 
+.Wheel {
+  display: inline;
+  padding: 10px 10px 10px 10px;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -35,4 +40,69 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Style for button containers */
+.button-container {
+  text-align: center; /* Centers the buttons horizontally */
+  margin: 10px 0;     /* Adds vertical spacing between button rows */
+}
+
+/* Style for buttons */
+.action-button {
+  background-color: #4CAF50; /* Green background */
+  border: none;              /* Removes default border */
+  color: white;              /* White text color */
+  padding: 15px 32px;        /* Top/bottom and left/right padding */
+  text-align: center;        /* Centers text inside button */
+  text-decoration: none;     /* Removes underline from text */
+  display: inline-block;     /* Aligns buttons side by side if needed */
+  font-size: 16px;           /* Font size for text */
+  margin: 4px 2px;           /* Margin around buttons */
+  cursor: pointer;           /* Changes cursor to pointer on hover */
+  border-radius: 4px;        /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+/* Hover effect for buttons */
+.action-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Optional: Focus effect for buttons */
+.action-button:focus {
+  outline: none; /* Removes default focus outline */
+  box-shadow: 0 0 3px #333; /* Adds a shadow to indicate focus */
+}
+
+/* Container for input box */
+.input-container {
+  text-align: center; /* Centers input box horizontally */
+  margin: 20px 0;     /* Adds vertical spacing */
+}
+
+/* Style for the input box */
+.styled-input {
+  width: 100%;                /* Makes input box full width of its container */
+  max-width: 500px;           /* Limits maximum width to 400px */
+  padding: 12px 15px;        /* Adds padding inside the input box */
+  border: 2px solid #ddd;    /* Light grey border */
+  border-radius: 8px;        /* Rounded corners */
+  font-size: 16px;           /* Font size for text inside input box */
+  color: #333;               /* Dark grey text color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for 3D effect */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for focus effect */
+}
+
+/* Placeholder text styling */
+.styled-input::placeholder {
+  color: #888;              /* Light grey placeholder text */
+  font-style: italic;      /* Italicize placeholder text */
+}
+
+/* Focus effect for input box */
+.styled-input:focus {
+  border-color: #4CAF50;   /* Green border on focus */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow on focus */
+  outline: none;           /* Removes default outline */
 }
