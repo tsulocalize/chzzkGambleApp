@@ -3,7 +3,7 @@ import axios from "axios";
 export async function fetchStartRoulette() {
   const serverEndpoint = process.env.REACT_APP_SERVER_ENDPOINT;
 
-  axios.post(serverEndpoint + '/start',
+  axios.post(serverEndpoint + '/roulette/start',
     {},
     {
       withCredentials : true,
@@ -13,5 +13,5 @@ export async function fetchStartRoulette() {
       }
     }
   ).then((response) => alert(response.status))
-    .catch((error) => alert("error"));
+    .catch((error) => alert(error));
 }

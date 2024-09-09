@@ -3,7 +3,7 @@ import axios from "axios";
 export async function fetchCheckConnection() {
   const serverEndpoint = process.env.REACT_APP_SERVER_ENDPOINT;
 
-  return (await axios.get(serverEndpoint + '/check',
+  return (await axios.get(serverEndpoint + '/roulette/check',
     {
       withCredentials : true,
       headers: {

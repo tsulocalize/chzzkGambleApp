@@ -3,7 +3,7 @@ import axios from "axios";
 export async function fetchCreateRoulette(streamUri) {
   const serverEndpoint = process.env.REACT_APP_SERVER_ENDPOINT;
 
-  axios.post(serverEndpoint + '/create',
+  return axios.post(serverEndpoint + '/roulette/create',
     {
       streamUri: streamUri
     },
@@ -17,6 +17,8 @@ export async function fetchCreateRoulette(streamUri) {
   ).then((response) => {
     if (response.status === 200) {
       alert("룰렛이 생성되었습니다.")
+      console.log(response)
+      return response.data;
     }
   })
     .catch((error) => {

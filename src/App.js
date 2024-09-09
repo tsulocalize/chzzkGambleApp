@@ -18,9 +18,9 @@ function App() {
 
   // Function to make the API call
   const [channelUri, setChannelUri] = useState('');
+  const [channelImageUrl, setChannelImageUrl] = useState(process.env.PUBLIC_URL + '/user.png');
+  const [channelName, setChannelName] = useState("채널명");
   const [props, setProps] = useState(null);
-  const [connected, setConnected] = useState(false);
-  const [isStarted, setIsStarted] = useState(false);
   const [voteButtonName, setVotebuttonName] = useState("투표 시작");
 
 
@@ -28,6 +28,12 @@ function App() {
   const handleInputChange = (event) => {
     setChannelUri(event.target.value);
   };
+
+  const handleCreateRoulette = async () => {
+    const result = await fetchCreateRoulette(channelUri);
+    setChannelImageUrl(result?.channelImageUrl);
+    setChannelName(result?.channelName);
+  }
 
   const handleFetchGet = async () => {
     try {
@@ -38,42 +44,36 @@ function App() {
     }
   };
 
-  const handleVote = async () => {
-    const res = await fetchStartRoulette()
-    if (res.status === 200) {
-      setIsStarted(true);
-    }
-  }
-
-  // if (true) {
-  //   useInterval(() => {
-  //     fetchCheckConnection().then(res => setConnected(res))
-  //   }, 1000);
-  // }
-  // //
-
   return (
     <div className="App">
-      <h1>치지직 룰렛!</h1>
-      <span>
-        { connected ? "연결됨" : "연결 안됨" }
-      </span>
-      <span className="Wheel">
-        <WheelComponent props={props}/>
-      </span>
-      <div className="input-container">
-        방송 주소 :
-        <input
-          className="styled-input"
-          type="text"
-          value={channelUri}
-          onChange={handleInputChange}
-          placeholder="https://chzzk.naver.com/live/4d812b586ff63f8a2946e64fa860bbf5"
-        />
+      <div className="header">
+        <span className="gamble">
+          치지직 룰렛
+        </span>
+        <div className="input-container header_right">
+          <input
+            className="styled-input"
+            type="text"
+            value={channelUri}
+            onChange={handleInputChange}
+            placeholder="https://chzzk.naver.com/live/4d812b586ff63f8a2946e64fa860bbf5"
+          />
+          <button className="create-button" onClick={() => handleCreateRoulette()}>룰렛 생성</button>
+        </div>
+        <div className="header_right">
+          <img className="face" src={channelImageUrl} alt="이미지"/>
+          <span className="name">
+            {channelName}
+          </span>
+        </div>
       </div>
-      <span className="button-container">
-        <button className="action-button" onClick={() => fetchCreateRoulette(channelUri)}>룰렛 생성</button>
-      </span>
+      <div>
+        <span className="Wheel">
+          {/*<WheelComponent props={props}/>*/}
+        </span>
+      </div>
+
+
       <span className="button-container">
         <button className="action-button" onClick={() => fetchStartRoulette()}>{voteButtonName}</button>
       </span>

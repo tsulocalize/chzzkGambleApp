@@ -7,6 +7,46 @@
   pointer-events: none;
 }
 
+img {
+  max-height: 2em;
+  object-fit: contain;
+}
+
+.face {
+  border-radius: 0.9em;
+  overflow: hidden;
+  width:40px;
+  height: 40px;
+ object-fit: cover;
+}
+
+.name {
+  padding-left: 0.5em;
+  white-space: nowrap;
+}
+
+.gamble {
+  display: flex;
+  align-items: center;
+}
+
+.header_right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  background-color: #333333;
+  color: aliceblue;
+  font-weight: bold;
+  padding-inline: 1em; /*left/right*/
+  padding-block: 0.5em; /*up/down*/
+  display: flex;
+  justify-content: flex-start;
+  font-size: 24px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -14,7 +54,8 @@
 }
 
 .Wheel {
-  display: inline;
+  display: flex;
+  justify-content: center;
   padding: 10px 10px 10px 10px;
 }
 
@@ -75,10 +116,37 @@
   box-shadow: 0 0 3px #333; /* Adds a shadow to indicate focus */
 }
 
+.create-button {
+  background-color: #45a049; /* Green background */
+  border: none;              /* Removes default border */
+  color: white;              /* White text color */
+  font-size: 24px;
+  margin-left: 0.5em;
+  width: 6em;
+  text-align: center;        /* Centers text inside button */
+  text-decoration: none;     /* Removes underline from text */
+  display: inline-block;     /* Aligns buttons side by side if needed */
+  /*margin: 4px 2px;           !* Margin around buttons *!*/
+  cursor: pointer;           /* Changes cursor to pointer on hover */
+  border-radius: 4px;        /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+  white-space: nowrap;
+}
+
+.create-button:hover {
+  background-color: #3d8a3d;
+}
+
+.create-button:active {
+  background-color: #00ffa3;
+}
+
+
 /* Container for input box */
 .input-container {
   text-align: center; /* Centers input box horizontally */
-  margin: 20px 0;     /* Adds vertical spacing */
+  width: 25em;
+  padding-left: 2em;
 }
 
 /* Style for the input box */

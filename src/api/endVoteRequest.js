@@ -3,7 +3,7 @@ import axios from "axios";
 export async function fetchEndRoulette() {
   const serverEndpoint = process.env.REACT_APP_SERVER_ENDPOINT;
 
-  axios.post(serverEndpoint + '/end',
+  axios.post(serverEndpoint + '/roulette/end',
     {},
     {
       withCredentials : true,
