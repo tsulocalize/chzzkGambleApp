@@ -1,0 +1,48 @@
+.canvasContainer {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  justify-items: center;
+
+  align-items: center;
+}
+
+.wheel {
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.pin {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 10;
+}
+
+.selectedOption {
+  color: #03ffa3;
+  font-size: 3.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  width: 500px;
+  height: 80px;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 30px;
+  width: 100%;
+  justify-content: center;
+  gap: 50px;
+}
+
+.wheelContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
