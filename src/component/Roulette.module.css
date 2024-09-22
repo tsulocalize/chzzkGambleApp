@@ -4,8 +4,9 @@
   height: 500px;
   display: flex;
   justify-items: center;
-
   align-items: center;
+  border-radius: 50%;
+  border: 3px solid black;
 }
 
 .wheel {
@@ -34,7 +35,6 @@
 .buttonContainer {
   display: flex;
   flex-direction: row;
-  gap: 10px;
   margin-top: 30px;
   width: 100%;
   justify-content: center;
