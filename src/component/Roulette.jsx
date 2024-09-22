@@ -17,8 +17,8 @@ const Roulette = ({ options, handleGetOptions }) => {
 
   // 각 옵션의 비율을 기반으로 각도 계산
   const calculateAngles = () => {
-    const total = options.reduce((sum, option) => sum + option.value, 0);
-    return options.map(option => (option.value / total) * 360);
+    const total = options.reduce((sum, option) => sum + option.vote, 0);
+    return options.map(option => (option.vote / total) * 360);
   };
 
   const angles = calculateAngles();
@@ -64,7 +64,7 @@ const Roulette = ({ options, handleGetOptions }) => {
       ctx.fillStyle = "#fff"; // 텍스트 색상 설정
       ctx.font = "bold 1.4rem Pretendard"; // 텍스트 폰트 설정
       ctx.textAlign = "center"; // 텍스트 정렬
-      ctx.fillText(options[i].text, 0, 0); // 옵션 텍스트 출력
+      ctx.fillText(options[i].name, 0, 0); // 옵션 텍스트 출력
       ctx.restore();
 
       startAngle = endAngle; // 다음 섹션의 시작 각도 업데이트
@@ -81,7 +81,7 @@ const Roulette = ({ options, handleGetOptions }) => {
     for (let i = 0; i < angles.length; i++) {
       cumulativeAngle += angles[i];
       if (normalizedAngle < cumulativeAngle) {
-        setSelectedOption(options[i].text); // 선택된 옵션 설정
+        setSelectedOption(options[i].name); // 선택된 옵션 설정
         break;
       }
     }
@@ -98,6 +98,7 @@ const Roulette = ({ options, handleGetOptions }) => {
         if (newSpeed < 0.01) {
           setIsSpinning(false); // 회전 중지
           setStopRequested(false); // 멈추기 요청 리셋
+          triggerConfetti();
           return 0;
         }
         return newSpeed; // 감소된 속도 반환
@@ -113,10 +114,6 @@ const Roulette = ({ options, handleGetOptions }) => {
 
   const handleStop = () => {
     setStopRequested(true); // 멈추기 요청
-
-    setTimeout(() => {
-      triggerConfetti();
-    }, 11500);
   };
 
   const reset = () => {
@@ -140,9 +137,9 @@ const Roulette = ({ options, handleGetOptions }) => {
       </div>
       <div className={styles.buttonContainer}>
         <Button
-          label={"게임 시작"}
+          label={"투표 반영"}
           onClick={handleGetOptions}
-          disabled={!isSpinning}
+          disabled={isSpinning}
         />
         <Button label={"돌리기"} onClick={handleRotate} disabled={isSpinning} />
         <Button label={"멈춤"} onClick={handleStop} disabled={!isSpinning} />
