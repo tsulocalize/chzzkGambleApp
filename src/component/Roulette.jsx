@@ -15,6 +15,14 @@ const Roulette = ({ options, handleGetOptions }) => {
   const [stopRequested, setStopRequested] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
 
+  // 각 옵션의 비율을 기반으로 각도 계산
+  const calculateAngles = () => {
+    const total = options.reduce((sum, option) => sum + option.value, 0);
+    return options.map(option => (option.value / total) * 360);
+  };
+
+  const angles = calculateAngles();
+
   useEffect(() => {
     drawWheel();
   }, [options]);
@@ -32,60 +40,52 @@ const Roulette = ({ options, handleGetOptions }) => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     const [cw, ch] = [canvas.width / 2, canvas.height / 2];
-    const arc = Math.PI / (options.length / 2); // 각 섹션의 각도 계산
+    let startAngle = -Math.PI / 2; // 시작 각도 (12시 방향)
 
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Canvas 초기화
 
-    // 첫 섹션이 중앙 위로 오도록 보정
     ctx.save();
-    ctx.translate(cw, ch);
-    ctx.rotate(-Math.PI / 2 - arc / 2); // 첫 섹션을 중앙 위에 맞추기 위해 회전 보정
-    ctx.translate(-cw, -ch);
+    ctx.translate(cw, ch); // 중앙으로 이동
 
     for (let i = 0; i < options.length; i++) {
+      const endAngle = startAngle - (angles[i] * Math.PI) / 180;
       ctx.beginPath();
       ctx.fillStyle = OPTIONS_COLORS[i % OPTIONS_COLORS.length]; // 섹션 색상 설정
-      ctx.moveTo(cw, ch);
-      ctx.arc(cw, ch, cw, arc * (i - 1), arc * i); // 섹션의 호를 그림
+      ctx.moveTo(0, 0);
+      ctx.arc(0, 0, cw, endAngle, startAngle); // 섹션의 호를 그림
       ctx.fill();
       ctx.closePath();
-    }
 
-    ctx.fillStyle = "#fff"; // 텍스트 색상 설정
-    ctx.font = "bold 1.4rem Pretendard"; // 텍스트 폰트 설정
-    ctx.textAlign = "center"; // 텍스트 정렬
-
-    for (let i = 0; i < options.length; i++) {
-      const angle = arc * i + arc / 2; // 섹션의 중앙 각도 계산
-
+      // 섹션의 중앙 각도 계산
+      const angle = endAngle + (angles[i] * Math.PI) / 360;
       ctx.save();
-
-      ctx.translate(
-        cw + Math.cos(angle) * (cw - 50),
-        ch + Math.sin(angle) * (ch - 50)
-      ); // 텍스트 위치 계산
-
+      ctx.translate(Math.cos(angle) * (cw - 50), Math.sin(angle) * (cw - 50)); // 텍스트 위치 계산
       ctx.rotate(angle + Math.PI / 2); // 텍스트 회전
-
-      options[i].split(" ").forEach((text, j) => {
-        ctx.fillText(text, 0, 30 * j);
-      });
-
+      ctx.fillStyle = "#fff"; // 텍스트 색상 설정
+      ctx.font = "bold 1.4rem Pretendard"; // 텍스트 폰트 설정
+      ctx.textAlign = "center"; // 텍스트 정렬
+      ctx.fillText(options[i].text, 0, 0); // 옵션 텍스트 출력
       ctx.restore();
+
+      startAngle = endAngle; // 다음 섹션의 시작 각도 업데이트
     }
 
     ctx.restore(); // 초기 회전 상태 복원
   };
 
   const findSelectedOption = useCallback(() => {
-    const segmentAngle = 360 / options.length; // 각 섹션의 각도 계산
-    let normalizedAngle = ((angle % 360) + 360) % 360; // 각도를 0~360도로 정규화
-    const selectedArcIndex = Math.floor(
-      ((360 - normalizedAngle + segmentAngle / 2) % 360) / segmentAngle
-    );
+    const totalAngles = angles.reduce((sum, angle) => sum + angle, 0);
+    let normalizedAngle = ((angle % totalAngles) + totalAngles) % totalAngles; // 각도를 0~totalAngles로 정규화
+    let cumulativeAngle = 0;
 
-    setSelectedOption(options[selectedArcIndex]); // 회전 중 선택된 옵션 업데이트
-  }, [angle, options]);
+    for (let i = 0; i < angles.length; i++) {
+      cumulativeAngle += angles[i];
+      if (normalizedAngle < cumulativeAngle) {
+        setSelectedOption(options[i].text); // 선택된 옵션 설정
+        break;
+      }
+    }
+  }, [angle, options, angles]);
 
   const spin = () => {
     setAngle((prevAngle) => (prevAngle + speed) % 360); // 각도를 증가시켜 룰렛 회전
@@ -129,7 +129,6 @@ const Roulette = ({ options, handleGetOptions }) => {
   return (
     <div className={styles.wheelContainer}>
       <div className={styles.selectedOption}>{selectedOption}</div>
-      {/* 선택된 옵션을 표시 */}
       <div className={styles.canvasContainer}>
         <canvas
           className={styles.wheel}
@@ -137,9 +136,7 @@ const Roulette = ({ options, handleGetOptions }) => {
           width={500}
           height={500}
         ></canvas>
-        {/* 룰렛을 그릴 Canvas */}
         <img className={styles.pin} src={pinImg} alt="pin" />
-        {/* 고정 핀 이미지 */}
       </div>
       <div className={styles.buttonContainer}>
         <Button
@@ -149,7 +146,6 @@ const Roulette = ({ options, handleGetOptions }) => {
         />
         <Button label={"돌리기"} onClick={handleRotate} disabled={isSpinning} />
         <Button label={"멈춤"} onClick={handleStop} disabled={!isSpinning} />
-        {/* 회전 멈춤 버튼 */}
       </div>
     </div>
   );

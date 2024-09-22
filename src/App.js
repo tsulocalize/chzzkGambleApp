@@ -14,7 +14,7 @@ function App() {
   const [channelName, setChannelName] = useState("채널명");
   const [options, setsOptions] = useState(null);
 
-  const OPTIONS = ["우주", "리안", "제제", "헤일리", "제이드", "카피", "시소"];
+  const OPTIONS = [{text : '우주', value: 3}, {text: '리안', value: 2}, {text: '카피', value: 2}, {text: '헤일리', value: 1}];
   const handleInputChange = (event) => {
     setChannelUri(event.target.value);
   };
