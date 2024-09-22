@@ -94,8 +94,8 @@ const Roulette = ({ options, handleGetOptions }) => {
 
     if (stopRequested) {
       setSpeed((prevSpeed) => {
-        const newSpeed = prevSpeed * 0.98; // 서서히 속도 감소
-        if (newSpeed < 0.5) {
+        const newSpeed = prevSpeed * 0.995; // 서서히 속도 감소
+        if (newSpeed < 0.01) {
           setIsSpinning(false); // 회전 중지
           setStopRequested(false); // 멈추기 요청 리셋
           return 0;
@@ -116,14 +116,14 @@ const Roulette = ({ options, handleGetOptions }) => {
 
     setTimeout(() => {
       triggerConfetti();
-    }, 3000);
+    }, 11500);
   };
 
   const reset = () => {
     const canvas = canvasRef.current;
     canvas.style.transform = "rotate(0deg)";
     setAngle(0); // 각도 상태 초기화
-    setSpeed(20); // 회전 속도를 설정
+    setSpeed(15); // 회전 속도를 설정
   };
 
   return (
