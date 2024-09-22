@@ -4,6 +4,7 @@ import { fetchCreateRoulette } from "./api/createRouletteRequest";
 import { fetchGetRoulette } from "./api/getRouletteRequest";
 import Roulette from "./component/Roulette";
 import Button from "./component/Button";
+import {fetchStartRoulette} from "./api/startVoteRequest";
 
 function App() {
   const [channelUri, setChannelUri] = useState("");
@@ -50,23 +51,25 @@ function App() {
             onClick={handleCreateRoulette}
             label={"룰렛 생성"}
           />
+          <Button
+            className="create-button"
+            onClick={fetchStartRoulette}
+            label={"투표 시작"}
+          />
         </div>
         <div className="header_right">
-          <img className="face" src={channelImageUrl} alt="이미지" />
+          <img className="face" src={channelImageUrl} alt="이미지"/>
           <span className="name">{channelName}</span>
         </div>
       </div>
       <div className="content-container">
         {OPTIONS?.length && (
-          <Roulette handleGetOptions={handleGetOptions} options={OPTIONS} />
+          <Roulette handleGetOptions={handleGetOptions} options={OPTIONS}/>
         )}
       </div>
+
       {/* 
-      <span className="button-container">
-        <button className="action-button" onClick={() => fetchStartRoulette()}>
-          {voteButtonName}
-        </button>
-      </span>
+
       <span className="button-container">
         <button className="action-button" onClick={() => fetchEndRoulette()}>
           투표 종료
