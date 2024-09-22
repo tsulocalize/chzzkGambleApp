@@ -27,7 +27,11 @@ function App() {
   const handleGetOptions = async () => {
     try {
       const result = await fetchGetRoulette();
-      setsOptions(result);
+      if (result.length > 0) {
+        setsOptions(result);
+      } else {
+        alert("투표 내역이 없습니다.")
+      }
     } catch (error) {
       console.log(`Error: ${error.message}`);
     }
