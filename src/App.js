@@ -5,9 +5,10 @@ import { fetchGetRoulette } from "./api/getRouletteRequest";
 import Roulette from "./component/Roulette";
 import Button from "./component/Button";
 import {fetchStartRoulette} from "./api/startVoteRequest";
+import {fetchConnection} from "./api/connectRequest";
 
 function App() {
-  const [channelUri, setChannelUri] = useState("");
+  const [inputChannelName, setInputChannelName] = useState("");
   const [channelImageUrl, setChannelImageUrl] = useState(
     process.env.PUBLIC_URL + "/user.png"
   );
@@ -15,13 +16,21 @@ function App() {
   const [options, setsOptions] = useState([{name : '우주', vote: 3}, {name: '리안', vote: 2}, {name: '카피', vote: 2}, {name: '헤일리', vote: 1}]);
 
   const handleInputChange = (event) => {
-    setChannelUri(event.target.value);
+    setInputChannelName(event.target.value);
   };
 
   const handleCreateRoulette = async () => {
-    const result = await fetchCreateRoulette(channelUri);
-    setChannelImageUrl(result?.channelImageUrl);
-    setChannelName(result?.channelName);
+    await fetchCreateRoulette(channelName);
+  };
+
+  const handleConnect = async () => {
+    try {
+      const result = await fetchConnection(inputChannelName);
+      setChannelImageUrl(result?.channelImageUrl);
+      setChannelName(result?.channelName);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleGetOptions = async () => {
@@ -45,9 +54,9 @@ function App() {
           <input
             className="styled-input"
             type="text"
-            value={channelUri}
+            value={inputChannelName}
             onChange={handleInputChange}
-            placeholder="치지직 링크를 입력하세요."
+            placeholder="스트리머 이름를 입력하세요."
           />
           <Button
             className="create-button"
@@ -58,6 +67,11 @@ function App() {
             className="create-button"
             onClick={fetchStartRoulette}
             label={"투표 시작"}
+          />
+          <Button
+            className="create-button"
+            onClick={handleConnect}
+            label={"연결"}
           />
         </div>
         <div className="header_right">

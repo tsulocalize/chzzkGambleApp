@@ -1,11 +1,11 @@
 import axios from "axios";
 
-export async function fetchCreateRoulette(streamUri) {
+export async function fetchCreateRoulette(channelName) {
   const serverEndpoint = process.env.REACT_APP_SERVER_ENDPOINT;
 
   return axios.post(serverEndpoint + '/roulette/create',
     {
-      streamUri: streamUri
+      channelName: channelName
     },
     {
       withCredentials : true,
