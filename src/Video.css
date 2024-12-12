@@ -1,0 +1,192 @@
+.App {
+  text-align: center;
+  background-color: #282c34;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+/* img {
+  object-fit: contain;
+} */
+
+.face {
+  border-radius: 0.9em;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.name {
+  padding-left: 0.5em;
+  white-space: nowrap;
+}
+
+.gamble {
+  display: flex;
+  align-items: center;
+}
+
+.header_right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  background-color: #333333;
+  color: aliceblue;
+  font-weight: bold;
+  padding-inline: 1em; /*left/right*/
+  padding-block: 0.5em; /*up/down*/
+  display: flex;
+  justify-content: flex-start;
+  font-size: 24px;
+  height: 64px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.Wheel {
+  display: flex;
+  justify-content: center;
+  padding: 10px 10px 10px 10px;
+  width: 100%;
+  height: 100vh;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Style for button containers */
+/* .button-container {
+  text-align: center;
+  margin: 10px 0;
+} */
+/* .action-button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+  background-color: #45a049;
+}
+
+.action-button:focus {
+  outline: none;
+  box-shadow: 0 0 3px #333;
+}
+
+.create-button {
+  background-color: #09cd85;
+  border: none;
+  color: white;
+  font-size: 24px;
+  margin-left: 0.5em;
+  width: 6em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+} */
+
+/* .create-button:hover {
+  background-color: #3d8a3d;
+}
+
+.create-button:active {
+  background-color: #00ffa3;
+} */
+
+/* Container for input box */
+.input-container {
+  text-align: center; /* Centers input box horizontally */
+  width: 25em;
+  padding-left: 2em;
+  display: flex;
+  gap: 10px;
+}
+
+/* Style for the input box */
+.styled-input {
+  width: 100%; /* Makes input box full width of its container */
+  max-width: 500px; /* Limits maximum width to 400px */
+  padding: 12px 15px; /* Adds padding inside the input box */
+  border: 2px solid #ddd; /* Light grey border */
+  border-radius: 8px; /* Rounded corners */
+  font-size: 16px; /* Font size for text inside input box */
+  color: #333; /* Dark grey text color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for 3D effect */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for focus effect */
+}
+
+/* Placeholder text styling */
+.styled-input::placeholder {
+  color: #888; /* Light grey placeholder text */
+  font-style: italic; /* Italicize placeholder text */
+}
+
+/* Focus effect for input box */
+.styled-input:focus {
+  border-color: #4caf50; /* Green border on focus */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow on focus */
+  outline: none; /* Removes default outline */
+}
+
+.create-button {
+  color: #03ffa3;
+  background-color: black;
+  border-radius: 10px;
+  padding: 8px;
+  width: 250px;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.content {
+  height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
