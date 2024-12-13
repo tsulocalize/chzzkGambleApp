@@ -8,7 +8,7 @@ export default function VideoTable({ data, videoId, setVideoId }) {
     return <p>No data available</p>;
   }
 
-  const headers = Object.keys(data[0]).slice(0, 5); // Limit to 5 columns
+  const headers = Object.keys(data[0]).slice(0, 6); // Limit to 6 columns
 
   const handleRowClick = (index) => {
     setVideoId(data[index].videoId)
