@@ -6,8 +6,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/*<Route path="/" element={<Main />} />*/}
-        <Route path="/video" element={<Video />} />
+        <Route path="/" element={<Video />} />
       </Routes>
     </BrowserRouter>
     );
