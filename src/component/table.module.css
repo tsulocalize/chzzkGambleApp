@@ -1,4 +1,5 @@
 .tableContainer {
+    max-width: 600px;
     max-height: 400px;
     overflow-y: auto;
     border: 1px solid #e0e0e0;
@@ -38,4 +39,8 @@
 
 .tr:hover {
     background-color: #f0f0f0;
+}
+
+.selected {
+    background-color: orange; /* Change to any color you'd like */
 }

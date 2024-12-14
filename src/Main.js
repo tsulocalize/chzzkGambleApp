@@ -19,24 +19,6 @@ function Main() {
     {name : '켬미', vote: 1, percentage: '25%'}, // 코어
     {name : '땡이', vote: 1, percentage: '25%'}, // 코어
     {name : '미아', vote: 1, percentage: '25%'}, // 코어
-    // {name : '커비', vote: 1, percentage: '4.5%'}, // 캠관
-    // {name : '구름', vote: 1, percentage: '4.5%'}, // 캠관
-    // {name : '헤인', vote: 1, percentage: '4.5%'}, // 캠관
-    // {name : '심지', vote: 1, percentage: '4.5%'}, // 캠관
-    // {name : '벼리', vote: 1, percentage: '4.5%'}, // 캠관
-    // {name : '해시', vote: 1, percentage: '4.5%'}, // 기획
-    // {name : '몰리', vote: 1, percentage: '4.5%'}, // 기획
-    // {name : '짱수', vote: 1, percentage: '4.5%'}, // 기획
-    // {name : '종이', vote: 1, percentage: '4.5%'}, // 기획
-    // {name : '웨디', vote: 1, percentage: '4.5%'}, // 만능
-    // {name : '카피', vote: 1, percentage: '4.5%'}, // 만능
-    // {name : '헤일리', vote: 1, percentage: '4.5%'}, // 만능
-    // {name : '도도', vote: 1, percentage: '4.5%'}, // 테코톡-진행
-    // {name : '월하', vote: 1, percentage: '4.5%'}, // 테코톡-진행
-    // {name : '망쵸', vote: 1, percentage: '4.5%'}, // 문제 해결팀
-    // {name : '예니', vote: 1, percentage: '4.5%'}, // 문제 해결팀
-    // {name : '감자', vote: 1, percentage: '4.5%'}, // 문제 해결팀
-    // {name : '릴리', vote: 1, percentage: '4.5%'} // 문제 해결팀
   ]);
 
   const handleInputChange = (event) => {
