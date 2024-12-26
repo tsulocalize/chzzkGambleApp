@@ -1,13 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import styles from './table.module.css'
 
-// {
-//   "videoName": "영상",
-//   "videoId": "ekr2nIex040",
-//   "cheese": 1000,
-//   "createdAt": "2024-12-14T14:24:11.176299"
-// }
-
 export default function VideoTable({ data, setVideoId }) {
   const [selectedRowIndex, setSelectedRowIndex] = useState(null);
   const [dataLength, setDataLength] = useState(0);

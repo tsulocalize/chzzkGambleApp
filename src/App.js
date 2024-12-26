@@ -1,12 +1,13 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import Main from "./Main";
 import Video from "./Video";
+import Landing from "./Landing";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Video />} />
+        <Route path="/" element={<Landing />} />
+        <Route path="/video" element={<Video />} />
       </Routes>
     </BrowserRouter>
     );
