@@ -1,6 +1,4 @@
 .tableContainer {
-    max-width: 600px;
-    max-height: 400px;
     overflow-y: auto;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
@@ -43,4 +41,20 @@
 
 .selected {
     background-color: orange; /* Change to any color you'd like */
+}
+
+/* Default for larger screens (PC) */
+@media (min-width: 768px) {
+    .tableContainer {
+        max-width: 600px;
+        max-height: 400px;
+    }
+}
+
+/* For mobile and smaller screens */
+@media (max-width: 767px) {
+    .tableContainer {
+        max-width: 100%;
+        max-height: 400px;
+    }
 }

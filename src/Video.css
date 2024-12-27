@@ -145,7 +145,7 @@
   .content {
     flex-direction: row; /* Horizontal layout for PC */
   }
-  .iframe {
+  .content iframe {
     width: 420px;
     height: 315px;
   }
@@ -159,8 +159,17 @@
   .gamble {
     display: none;
   }
-  .iframe {
-    width: 336px;
-    height: 252px;
+  .content iframe {
+    width: 90%;
+    height: 30%;
+  }
+  .name {
+    display: none;
+  }
+  .face {
+    display: none;
+  }
+  .header_right {
+    padding-left: 10px;
   }
 }
