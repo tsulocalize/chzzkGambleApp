@@ -77,7 +77,7 @@ function Video() {
         </div>
       </div>
       <div className="content">
-        <iframe width="420" height="315" title="main-content"
+        <iframe title="main-content"
                 src={`https://www.youtube.com/embed/${videoId}`}>
         </iframe>
         <VideoTable data={videos} setVideoId={setVideoId}/>

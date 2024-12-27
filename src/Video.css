@@ -137,4 +137,30 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
+  flex-wrap: wrap; /* Ensure wrapping on smaller screens */
+}
+
+/* Default for larger screens (PC) */
+@media (min-width: 768px) {
+  .content {
+    flex-direction: row; /* Horizontal layout for PC */
+  }
+  .iframe {
+    width: 420px;
+    height: 315px;
+  }
+}
+
+/* For mobile and smaller screens */
+@media (max-width: 767px) {
+  .content {
+    flex-direction: column; /* Vertical layout for mobile */
+  }
+  .gamble {
+    display: none;
+  }
+  .iframe {
+    width: 336px;
+    height: 252px;
+  }
 }
