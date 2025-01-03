@@ -54,35 +54,34 @@ function Video() {
 
   return (
     <div className="Video">
-      잠시 수리중...
-      {/*<div className="header">*/}
-      {/*  <span className="gamble">영상 도네이션</span>*/}
-      {/*  <div className="input-container header_right">*/}
-      {/*    <input*/}
-      {/*      className="styled-input"*/}
-      {/*      type="text"*/}
-      {/*      value={inputChannelName}*/}
-      {/*      onChange={handleInputChange}*/}
-      {/*      placeholder="채널명을 입력하세요"*/}
-      {/*    />*/}
-      {/*    <Button*/}
-      {/*      className="create-button"*/}
-      {/*      onClick={handleConnect}*/}
-      {/*      label={"연결"}*/}
-      {/*    />*/}
-      {/*    <InfoIcon />*/}
-      {/*  </div>*/}
-      {/*  <div className="header_right">*/}
-      {/*    <img className="face" src={channelImageUrl} alt="이미지"/>*/}
-      {/*    <span className="name">{channelName}</span>*/}
-      {/*  </div>*/}
-      {/*</div>*/}
-      {/*<div className="content">*/}
-      {/*  <iframe title="main-content"*/}
-      {/*          src={`https://www.youtube.com/embed/${videoId}`}>*/}
-      {/*  </iframe>*/}
-      {/*  <VideoTable data={videos} setVideoId={setVideoId}/>*/}
-      {/*</div>*/}
+      <div className="header">
+        <span className="gamble">영상 도네이션</span>
+        <div className="input-container header_right">
+          <input
+            className="styled-input"
+            type="text"
+            value={inputChannelName}
+            onChange={handleInputChange}
+            placeholder="채널명을 입력하세요"
+          />
+          <Button
+            className="create-button"
+            onClick={handleConnect}
+            label={"연결"}
+          />
+          <InfoIcon />
+        </div>
+        <div className="header_right">
+          <img className="face" src={channelImageUrl} alt="이미지"/>
+          <span className="name">{channelName}</span>
+        </div>
+      </div>
+      <div className="content">
+        <iframe title="main-content"
+                src={`https://www.youtube.com/embed/${videoId}`}>
+        </iframe>
+        <VideoTable data={videos} setVideoId={setVideoId}/>
+      </div>
     </div>
   );
 }
