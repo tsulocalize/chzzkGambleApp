@@ -82,6 +82,18 @@ function Video() {
         </iframe>
         <VideoTable data={videos} setVideoId={setVideoId}/>
       </div>
+      <a className="discord"
+        href="https://discord.gg/48J5u2NVwK"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <img
+          className="discordImg"
+          src={"/small_logo_blurple_RGB.svg"}
+          alt={""}
+
+        />
+      </a>
     </div>
   );
 }
