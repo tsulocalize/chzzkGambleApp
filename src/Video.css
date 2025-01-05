@@ -162,13 +162,14 @@ a {
 }
 
 .discord {
+  display: inline-block;  /* Makes the <a> element only as wide as its content (the <img>) */
   position: absolute;
   right: 10px;
   bottom: 10px;
 }
 
 .discordImg {
-  width: 40%;
+  width: 120px;
   height: auto;
   float: right;
 }
