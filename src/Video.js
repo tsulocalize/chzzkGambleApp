@@ -69,13 +69,16 @@ function Video() {
             onClick={handleConnect}
             label={"연결"}
           />
-          <InfoIcon />
+          <InfoIcon/>
         </div>
-        <div className="header_right">
+        <div className="header_right_right">
           <img className="face" src={channelImageUrl} alt="이미지"/>
           <span className="name">{channelName}</span>
         </div>
       </div>
+      <a href="/ranking" target="_blank" rel="noopener noreferrer">
+        <img className="ranking" src="/ranking.png" alt="이미지"/>
+      </a>
       <div className="content">
         <iframe title="main-content"
                 src={`https://www.youtube.com/embed/${videoId}`}>
@@ -83,9 +86,9 @@ function Video() {
         <VideoTable data={videos} setVideoId={setVideoId}/>
       </div>
       <a className="discord"
-        href="https://discord.gg/48J5u2NVwK"
-        target="_blank"
-        rel="noreferrer"
+         href="https://discord.gg/48J5u2NVwK"
+         target="_blank"
+         rel="noreferrer"
       >
         <img
           className="discordImg"

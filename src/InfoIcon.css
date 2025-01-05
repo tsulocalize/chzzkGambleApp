@@ -43,3 +43,9 @@
         opacity: 1;
     }
 }
+
+@media (max-width: 767px) {
+    .info-icon {
+        display: none;
+    }
+}
