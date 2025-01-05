@@ -8,6 +8,10 @@
   pointer-events: none;
 }
 
+a {
+  display: inline-block;  /* Makes the <a> element only as wide as its content (the <img>) */
+}
+
 .ranking {
   cursor: pointer;
   margin-left: 10px;
