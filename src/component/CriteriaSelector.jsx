@@ -17,7 +17,7 @@ export function CriteriaSelector({ currentCriteria, onCriteriaChange }) {
         className={`px-4 py-2 rounded-md ${currentCriteria === 'COUNT' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-800'}`}
         onClick={() => onCriteriaChange('COUNT')}
       >
-        개수
+        횟수
       </button>
 
     </div>
