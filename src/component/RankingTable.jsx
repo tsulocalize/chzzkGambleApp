@@ -21,7 +21,7 @@ export function RankingTable({ data }) {
 
   return (
     <div className="border rounded-lg overflow-hidden">
-      <table className="w-full">
+      <table className="w-full text-sm sm:text-sm md:text-base">
         <thead>
         <tr className="bg-gray-100">
           <th className="w-20 p-2 text-left">랭킹</th>

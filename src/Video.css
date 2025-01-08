@@ -151,6 +151,17 @@ a {
   width: 250px;
   font-size: 1.6rem;
   font-weight: 600;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.create-button:hover {
+  transform: translateY(-1px) translateX(-0.5px); /* Moves the button down */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Simulates a pressed shadow */
+}
+
+.create-button:active {
+  transform: translateY(1px) translateX(0.5px); /* Moves the button down */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Simulates a pressed shadow */
 }
 
 .content {
@@ -217,8 +228,9 @@ a {
     display: none;
   }
   .content iframe {
-    width: auto;
-    height: auto;
+    width: 80%;
+    height: 25%;
+    margin-bottom: 50px;
   }
   .name {
     display: none;

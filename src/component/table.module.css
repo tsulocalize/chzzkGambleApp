@@ -6,9 +6,10 @@
 }
 
 .table {
-    width: 100%;
+    width: 100%; /* Ensures the table stretches to fill the screen */
     border-collapse: collapse;
     background-color: #ffffff;
+    padding: 5px;
 }
 
 .th {
@@ -54,7 +55,14 @@
 /* For mobile and smaller screens */
 @media (max-width: 767px) {
     .tableContainer {
-        max-width: 100%;
-        max-height: 400px;
+        font-size: 13px;
+        width: 95%;
+        max-height: 60%;
+    }
+    .th {
+        padding: 10px 0 10px 10px;
+    }
+    .td {
+        padding: 10px 0 10px 10px;
     }
 }
