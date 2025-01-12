@@ -39,11 +39,16 @@ function Video() {
 
   const handleConnect = async () => {
     try {
-      const result = await fetchConnection(inputChannelName);
-      setChannelName(result?.channelName);
-      setChannelImageUrl(result?.channelImageUrl);
-      setChannelId(result?.channelId);
-      setUnitPrice(await fetchGetVideoUnitPrice(channelId));
+      fetchConnection(inputChannelName)
+        .then(result => {
+          setChannelName(result.channelName);
+          setChannelImageUrl(result.channelImageUrl);
+          setChannelId(result.channelId);
+          fetchGetVideoUnitPrice(result.channelId)
+            .then(unitPrice => {
+              setUnitPrice(unitPrice);
+            });
+        });
     } catch (error) {
       console.log(error);
     }
