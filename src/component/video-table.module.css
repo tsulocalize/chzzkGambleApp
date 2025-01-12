@@ -10,6 +10,11 @@
     .td {
         padding: 10px 0 10px 10px;
     }
+    th:nth-child(4), td:nth-child(4) {
+        white-space: nowrap;
+        width: 18%;
+        overflow: hidden;
+    }
     th:nth-child(5), td:nth-child(5) {
         white-space: nowrap;
         width: 10%;
