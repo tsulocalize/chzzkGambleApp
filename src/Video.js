@@ -5,6 +5,7 @@ import Button from "./component/Button";
 import {fetchGetVideoDonation} from "./api/getVideoDonation";
 import VideoTable from "./component/video-table";
 import InfoIcon from "./InfoIcon";
+import {fetchGetVideoUnitPrice} from "./api/getVideoSetting";
 
 function Video() {
   const [videoId, setVideoId] = useState("");
@@ -14,10 +15,20 @@ function Video() {
   const [channelImageUrl, setChannelImageUrl] = useState(
     process.env.PUBLIC_URL + "/user.png"
   );
+  const [channelId, setChannelId] = useState("");
+  const [unitPrice, setUnitPrice] = useState(null);
+
 
   const handleInputChange = (event) => {
     setInputChannelName(event.target.value);
   };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleConnect()
+        .then();
+    }
+  }
 
   const handleGetVideo = async () => {
     const result = await fetchGetVideoDonation(channelName);
@@ -31,6 +42,8 @@ function Video() {
       const result = await fetchConnection(inputChannelName);
       setChannelName(result?.channelName);
       setChannelImageUrl(result?.channelImageUrl);
+      setChannelId(result?.channelId);
+      setUnitPrice(await fetchGetVideoUnitPrice(channelId));
     } catch (error) {
       console.log(error);
     }
@@ -62,6 +75,7 @@ function Video() {
             type="text"
             value={inputChannelName}
             onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
             placeholder="채널명을 입력하세요"
           />
           <Button
@@ -83,7 +97,7 @@ function Video() {
         <iframe title="main-content"
                 src={`https://www.youtube.com/embed/${videoId}`}>
         </iframe>
-        <VideoTable data={videos} setVideoId={setVideoId}/>
+        <VideoTable data={videos} setVideoId={setVideoId} unitPrice={unitPrice}/>
       </div>
       <a className="discord"
          href="https://discord.gg/48J5u2NVwK"

@@ -1,24 +1,40 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useMemo, useState} from 'react'
 import styles from './table.module.css'
+import './video-table.module.css'
 
-export default function VideoTable({ data, setVideoId }) {
-  const [selectedRowIndex, setSelectedRowIndex] = useState(null);
+export default function VideoTable({ data, setVideoId, unitPrice }) {
+  const [selectedRowIndex, setSelectedRowIndex] = useState(1);
   const [dataLength, setDataLength] = useState(0);
+  const accCheese = useMemo(() => {
+    const result = data.reduceRight(
+      (acc, item, index) => {
+        const before = acc[index + 1] | 0;
+        acc[index] = before + item.cheese;
+        return acc;
+      }, []
+    );
+
+    result.shift(); // remove first
+    result.push(0); // append 0
+
+    return result;
+  }, [data]);
 
   useEffect(() => {
-    if (data.length === 0 || selectedRowIndex === null) {
+    if (data.length === 0) {
       return;
     }
     setSelectedRowIndex(selectedRowIndex + data.length - dataLength);
     setDataLength(data.length);
+
   }, [data, selectedRowIndex, dataLength]);
 
   if (data.length === 0) {
     return <p>기록된 영상 도네이션이 없습니다.</p>;
   }
 
-  const headers = ['No.', '영상 제목', '치즈', '생성 일자'];
-  const headersInData = ['id', 'videoName', 'cheese', 'createdAt'];
+  const headers = ['No.', '영상 제목', '치즈', '생성 시간', '⏳'];
+  const headersInData = ['id', 'videoName', 'cheese', 'createdAt', 'timeTo'];
 
   const handleRowClick = (index) => {
     setSelectedRowIndex(index);
@@ -54,6 +70,9 @@ export default function VideoTable({ data, setVideoId }) {
               if (header === 'id') {
                 tableData = data.length - (index)
               }
+              if (header === 'timeTo') {
+                tableData = formatTimeTo((accCheese[index] - accCheese[selectedRowIndex]) / unitPrice);
+              }
               return (
                 <td key={header} className={`${styles.td} ${selectedRowIndex === index ? styles.selected : ''}`}>
                 {tableData}
@@ -70,12 +89,26 @@ export default function VideoTable({ data, setVideoId }) {
 // Function to format the date
 function formatDate(dateString) {
   const date = new Date(dateString);
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1; // Months are 0-based, so add 1
-  const day = date.getDate();
   const hours = date.getHours().toString().padStart(2, '0');
   const minutes = date.getMinutes().toString().padStart(2, '0');
   const seconds = date.getSeconds().toString().padStart(2, '0');
 
-  return `${year}년 ${month}월 ${day}일, ${hours}:${minutes}:${seconds}`;
+  return `${hours}:${minutes}:${seconds}`;
+}
+
+function formatTimeTo(second) {
+  if (second === 0) {
+    return 'NOW';
+  }
+
+  const absSecond = Math.abs(second);
+
+  if (absSecond < 60) {
+    return Math.round(second) + '초';
+  }
+  if (absSecond < 3600) {
+    return Math.round(second / 60) + '분';
+  }
+
+  return Math.round(second / 3600) + '시간';
 }

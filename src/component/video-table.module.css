@@ -1,0 +1,33 @@
+@media (min-width: 767px) {
+    .tableContainer {
+        font-size: 13px;
+        width: 95%;
+        max-height: 60%;
+    }
+    .th {
+        padding: 10px 0 10px 10px;
+    }
+    .td {
+        padding: 10px 0 10px 10px;
+    }
+    th:nth-child(5), td:nth-child(5) {
+        white-space: nowrap;
+        width: 10%;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 766px) {
+    .th {
+        padding: 7px 3px 7px 7px;
+    }
+    .td {
+        padding: 7px 3px 7px 7px;
+    }
+    th:nth-child(5), td:nth-child(5) {
+        white-space: nowrap;
+        width: 8%;
+        padding-right: 3px;
+        overflow: hidden;
+    }
+}

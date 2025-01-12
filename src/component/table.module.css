@@ -66,3 +66,12 @@
         padding: 10px 0 10px 10px;
     }
 }
+
+@media (max-width: 380px) {
+    .th {
+        padding: 7px 0 7px 7px;
+    }
+    .td {
+        padding: 7px 0 7px 7px;
+    }
+}
