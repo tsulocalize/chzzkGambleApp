@@ -12,7 +12,7 @@
     }
     th:nth-child(4), td:nth-child(4) {
         white-space: nowrap;
-        width: 18%;
+        width: 17%;
         overflow: hidden;
     }
     th:nth-child(5), td:nth-child(5) {
