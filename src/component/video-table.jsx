@@ -104,11 +104,11 @@ function formatTimeTo(second) {
   const absSecond = Math.abs(second);
 
   if (absSecond < 60) {
-    return Math.round(second) + '초';
+    return Math.floor(second) + '초';
   }
   if (absSecond < 3600) {
-    return Math.round(second / 60) + '분';
+    return Math.floor(second / 60) + '분';
   }
 
-  return Math.round(second / 3600) + '시간';
+  return Math.floor(second / 3600) + '시간';
 }
