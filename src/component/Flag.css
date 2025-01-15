@@ -1,0 +1,23 @@
+.flag {
+    position: fixed;
+    top : 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: whitesmoke;
+    color: #282c34;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: x-large;
+    font-weight: bold;
+    opacity: 0;
+    transition: top 1s ease, opacity 0.5s ease;
+}
+
+.flag.visible {
+    top: 50%;
+    opacity: 1;
+}
+
+.flag.move-down {
+    top: 60%
+}

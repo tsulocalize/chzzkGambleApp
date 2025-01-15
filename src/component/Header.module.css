@@ -1,0 +1,119 @@
+.face {
+    border-radius: 0.9em;
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    min-width: 40px;
+    margin-left: 5px;
+}
+
+.name {
+    padding-left: 0.5em;
+    white-space: nowrap;
+}
+
+.gamble {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+.header_right {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+}
+
+.header_right_right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.header {
+    background-color: #333333;
+    color: aliceblue;
+    font-weight: bold;
+    padding-inline: 1em; /*left/right*/
+    padding-block: 0.5em; /*up/down*/
+    display: flex;
+    justify-content: flex-start;
+    font-size: 24px;
+    height: 64px;
+}
+
+.App-header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+/* Style for the input box */
+.styledInput {
+    width: 100%; /* Makes input box full width of its container */
+    max-width: 500px; /* Limits maximum width to 400px */
+    padding: 12px 15px; /* Adds padding inside the input box */
+    border: 2px solid #ddd; /* Light grey border */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 16px; /* Font size for text inside input box */
+    color: #333; /* Dark grey text color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for 3D effect */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for focus effect */
+}
+
+/* Placeholder text styling */
+.styledInput::placeholder {
+    color: #888; /* Light grey placeholder text */
+    font-style: italic; /* Italicize placeholder text */
+}
+
+/* Focus effect for input box */
+.styledInput:focus {
+    border-color: #4caf50; /* Green border on focus */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow on focus */
+    outline: none; /* Removes default outline */
+}
+
+/* Default for larger screens (PC) */
+@media (min-width: 768px) {
+    .gamble {
+        min-width: 130px;
+    }
+}
+
+/* For mobile and smaller screens */
+@media (max-width: 767px) {
+    .header {
+        padding-inline: 0.5em; /*left/right*/
+    }
+    .input-container {
+        width: 15em;
+        padding-left: 1em;
+    }
+    .create-button {
+        font-size: 1.3rem;
+        max-width: 100px;
+    }
+    .content {
+        display: flex;
+        flex-direction: row; /* Vertical layout for mobile */
+        gap: 5px
+    }
+    .gamble {
+        display: none;
+    }
+    .name {
+        display: none;
+    }
+    .header_right {
+        padding-left: 10px;
+    }
+}
+
+

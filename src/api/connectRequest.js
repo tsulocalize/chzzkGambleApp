@@ -21,6 +21,5 @@ export async function fetchConnection(channelName) {
     } else {
       alert('알 수 없는 에러가 발생했습니다.');
     }
-    console.error('연결에 실패했습니다.', error);
   })
 }

@@ -24,12 +24,14 @@
 }
 
 .selectedOption {
-  color: #03ffa3;
-  font-size: 3.5rem;
+  color: lightcoral;
+  font-size: 2rem;
   font-weight: 600;
-  margin-bottom: 20px;
   width: 500px;
-  height: 80px;
+  height: 5%;
+  margin-bottom: 2%;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .buttonContainer {

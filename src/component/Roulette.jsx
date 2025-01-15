@@ -1,12 +1,12 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import pinImg from "../assets/Pin.svg";
 import styles from "./Roulette.module.css";
-import Button from "./Button";
 
 import triggerConfetti from "../util/triggerConfetti";
 import { OPTIONS_COLORS } from "../constants/OptionColors";
+import SpinningButton from "./SpinningButton";
 
-const Roulette = ({ options, handleGetOptions }) => {
+const Roulette = ({ options, setSelected, setTrigger }) => {
   const canvasRef = useRef(null);
 
   const [isSpinning, setIsSpinning] = useState(false);
@@ -57,13 +57,13 @@ const Roulette = ({ options, handleGetOptions }) => {
       ctx.closePath();
 
       // 섹션의 중앙 각도 계산
-      const angle = endAngle + (angles[i] * Math.PI) / 360;
+      const angle = endAngle + (angles[i] * Math.PI) / 360 + 0.08;
       ctx.save();
-      ctx.translate(Math.cos(angle) * (cw - 50), Math.sin(angle) * (cw - 50)); // 텍스트 위치 계산
-      ctx.rotate(angle + Math.PI / 2); // 텍스트 회전
+      ctx.translate(Math.cos(angle) * (cw - 150), Math.sin(angle) * (cw - 150)); // 텍스트 위치 계산
+      ctx.rotate(angle); // 텍스트 회전
       ctx.fillStyle = "#fff"; // 텍스트 색상 설정
       ctx.font = "bold 1.4rem Pretendard"; // 텍스트 폰트 설정
-      ctx.textAlign = "center"; // 텍스트 정렬
+      ctx.textAlign = "left"; // 텍스트 정렬
       ctx.fillText(options[i].name, 0, 0); // 옵션 텍스트 출력
       ctx.restore();
 
@@ -99,6 +99,11 @@ const Roulette = ({ options, handleGetOptions }) => {
           setIsSpinning(false); // 회전 중지
           setStopRequested(false); // 멈추기 요청 리셋
           triggerConfetti();
+          setSelected(selectedOption);
+          setTrigger(true);
+          setTimeout(() => {
+            setTrigger(false);
+          }, 5000);
           return 0;
         }
         return newSpeed; // 감소된 속도 반환
@@ -136,13 +141,13 @@ const Roulette = ({ options, handleGetOptions }) => {
         <img className={styles.pin} src={pinImg} alt="pin" />
       </div>
       <div className={styles.buttonContainer}>
-        <Button
-          label={"투표 반영"}
-          onClick={handleGetOptions}
-          disabled={isSpinning}
-        />
-        <Button label={"돌리기"} onClick={handleRotate} disabled={isSpinning} />
-        <Button label={"멈춤"} onClick={handleStop} disabled={!isSpinning} />
+        {/*<Button*/}
+        {/*  className="create-button"*/}
+        {/*  onClick={fetchStartRoulette}*/}
+        {/*  label={"투표 시작"}*/}
+        {/*/>*/}
+        <SpinningButton label1={"돌리기"} label2={"멈춤"}
+                        onClick1={handleRotate} onClick2={handleStop} isType1={!isSpinning}/>
       </div>
     </div>
   );
