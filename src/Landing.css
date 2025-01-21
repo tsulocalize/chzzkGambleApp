@@ -1,0 +1,13 @@
+.content-container-landing {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 150px;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

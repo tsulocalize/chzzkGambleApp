@@ -1,11 +1,12 @@
 import axios from "axios";
 
-export async function fetchCreateRoulette(channelName) {
+export async function fetchCreateRoulette(channelName, rouletteUnit) {
   const serverEndpoint = process.env.REACT_APP_SERVER_ENDPOINT;
 
   return axios.post(serverEndpoint + '/roulette/create',
     {
-      channelName: channelName
+      channelName: channelName,
+      rouletteUnit: rouletteUnit
     },
     {
       withCredentials : true,

@@ -50,7 +50,7 @@ export function Header({ title, channelName, setChannelName, fetchUnitPrice }) {
           onClick={handleConnect}
           label={"연결"}
         />
-        <InfoIcon/>
+        {/*<InfoIcon/>*/}
       </div>
       <div className= {styles.header_right_right}>
         <img className= {styles.face} src={channelImageUrl} alt="이미지"/>

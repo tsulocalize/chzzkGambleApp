@@ -1,7 +1,7 @@
 import React from 'react'
-import styles from './table.module.css'
+import styles from './roulette-table.module.css'
 
-export default function Table({ data }) {
+export default function RouletteTable({ data }) {
   if (data.length === 0) {
       return <p>집계된 항목이 존재하지 않습니다</p>
   }

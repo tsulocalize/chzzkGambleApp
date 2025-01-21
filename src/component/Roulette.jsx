@@ -103,7 +103,7 @@ const Roulette = ({ options, setSelected, setTrigger }) => {
           setTrigger(true);
           setTimeout(() => {
             setTrigger(false);
-          }, 5000);
+          }, 7000);
           return 0;
         }
         return newSpeed; // 감소된 속도 반환
@@ -125,7 +125,7 @@ const Roulette = ({ options, setSelected, setTrigger }) => {
     const canvas = canvasRef.current;
     canvas.style.transform = "rotate(0deg)";
     setAngle(0); // 각도 상태 초기화
-    setSpeed(15); // 회전 속도를 설정
+    setSpeed(20); // 회전 속도를 설정
   };
 
   return (
@@ -141,11 +141,6 @@ const Roulette = ({ options, setSelected, setTrigger }) => {
         <img className={styles.pin} src={pinImg} alt="pin" />
       </div>
       <div className={styles.buttonContainer}>
-        {/*<Button*/}
-        {/*  className="create-button"*/}
-        {/*  onClick={fetchStartRoulette}*/}
-        {/*  label={"투표 시작"}*/}
-        {/*/>*/}
         <SpinningButton label1={"돌리기"} label2={"멈춤"}
                         onClick1={handleRotate} onClick2={handleStop} isType1={!isSpinning}/>
       </div>

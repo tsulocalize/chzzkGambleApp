@@ -16,7 +16,7 @@
 .gamble {
     display: flex;
     align-items: center;
-    margin-right: auto;
+    margin-right: 5rem;
 }
 
 .header_right {
