@@ -85,3 +85,9 @@ button:hover .circle .icon.arrow {
 button:hover .button-text {
     color: #fff;
 }
+
+@media (max-width: 767px) {
+    button.learn-more {
+        width: 300px;
+    }
+}

@@ -11,3 +11,10 @@
     justify-content: center;
     flex-direction: column;
 }
+
+@media (max-width: 767px) {
+    .content-container-landing {
+        flex-direction: column;
+        gap: 40px;
+    }
+}
