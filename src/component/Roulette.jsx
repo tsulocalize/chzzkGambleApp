@@ -94,7 +94,7 @@ const Roulette = ({ options, setSelected, setTrigger }) => {
 
     if (stopRequested) {
       setSpeed((prevSpeed) => {
-        const newSpeed = prevSpeed * 0.995; // 서서히 속도 감소
+        const newSpeed = prevSpeed * 0.996; // 서서히 속도 감소
         if (newSpeed < 0.01) {
           setIsSpinning(false); // 회전 중지
           setStopRequested(false); // 멈추기 요청 리셋
