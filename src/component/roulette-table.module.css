@@ -43,6 +43,8 @@
 th:nth-child(2), td:nth-child(2) {
     text-align: left;
     min-width: 200px;
+    overflow-wrap: anywhere;
+    word-break: normal;
 }
 
 .generalSelected {
