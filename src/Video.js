@@ -21,6 +21,7 @@ function Video() {
     'Tip. 선택된 영도를 기준으로 남은 시간이 표시됩니다',
     'Tip. \'Ctrl + F\' 로 영도를 빠르게 찾아보세요'
   ]);
+  const [clickedChannel, setClickedChannel] = useState("");
 
   const handleGetVideo = async () => {
     const result = await fetchGetVideoDonation(channelName);
@@ -54,12 +55,12 @@ function Video() {
 
   return (
     <div className="Video">
-      <Header title="영상 도네이션" channelName={channelName} setChannelName={setChannelName} fetchUnitPrice={fetchUnitPrice}/>
+      <Header title="영상 도네이션" channelName={channelName} setChannelName={setChannelName} fetchUnitPrice={fetchUnitPrice} clickedChannel={clickedChannel}/>
       <div className="menu-line">
         <a href="/ranking" target="_blank" rel="noopener noreferrer">
           <img className="ranking" src="/ranking.png" alt="이미지"/>
         </a>
-        <LiveButton/>
+        <LiveButton setClickedChannel={setClickedChannel}/>
       </div>
       <div className="content">
         <iframe title="main-content"

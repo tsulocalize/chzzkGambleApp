@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {fetchVideoDonating} from "../api/getVideoDonating";
 
-const LiveButton = () => {
+const LiveButton = ({setClickedChannel}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [lastFetched, setLastFetched] = useState(null);
   const [menuItems, setMenuItems] = useState([]);
@@ -24,8 +24,9 @@ const LiveButton = () => {
     }
   }, [isOpen]);
 
-  const handleMenuClick = () => {
+  const handleMenuClick = (item) => {
     setIsOpen(false);
+    setClickedChannel(item);
   };
 
   return (
@@ -59,7 +60,7 @@ const LiveButton = () => {
             <li
               key={index}
               className="p-2 rounded cursor-pointer hover:bg-gray-200"
-              onClick={handleMenuClick}
+              onClick={() => handleMenuClick(item)}
             >
               {item}
             </li>

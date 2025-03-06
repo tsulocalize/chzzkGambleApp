@@ -37,8 +37,6 @@ export default function VideoTable({ data, setVideoId, unitPrice, isHighlighter 
     result.shift(); // remove first
     result.push(0); // append 0
 
-    console.log(result);
-
     return result;
   }, [highlighterData]);
 

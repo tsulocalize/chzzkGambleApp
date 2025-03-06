@@ -1,10 +1,9 @@
 import Button from "./Button";
-import InfoIcon from "../InfoIcon";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {fetchConnection} from "../api/connectRequest";
 import styles from "./Header.module.css";
 
-export function Header({ title, channelName, setChannelName, fetchUnitPrice }) {
+export function Header({ title, channelName, setChannelName, fetchUnitPrice, clickedChannel }) {
   const [inputChannelName, setInputChannelName] = useState("");
   const [channelImageUrl, setChannelImageUrl] = useState(
     process.env.PUBLIC_URL + "/user.png"
@@ -33,6 +32,21 @@ export function Header({ title, channelName, setChannelName, fetchUnitPrice }) {
     });
   };
 
+  useEffect(() => {
+    if (!clickedChannel || clickedChannel === "" || channelName === clickedChannel) {
+      return;
+    }
+    fetchConnection(clickedChannel)
+      .then(result => {
+        setChannelName(result.channelName);
+        setChannelImageUrl(result.channelImageUrl);
+        fetchUnitPrice(result.channelId);
+      }).catch((error) => {
+      console.error(error);
+    });
+
+  }, [clickedChannel]);
+
   return (
     <div className= {styles.header}>
       <span className= {styles.gamble}>{title}</span>
@@ -50,7 +64,6 @@ export function Header({ title, channelName, setChannelName, fetchUnitPrice }) {
           onClick={handleConnect}
           label={"연결"}
         />
-        {/*<InfoIcon/>*/}
       </div>
       <div className= {styles.header_right_right}>
         <img className= {styles.face} src={channelImageUrl} alt="이미지"/>
