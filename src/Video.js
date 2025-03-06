@@ -6,6 +6,7 @@ import TipComponent from "./component/TipComponent";
 import ToggleButton from 'react-toggle-button';
 import {Header} from "./component/Header";
 import {fetchGetVideoUnitPrice} from "./api/getVideoSetting";
+import LiveButton from "./component/LiveButton";
 
 function Video() {
   const [videoId, setVideoId] = useState("");
@@ -54,9 +55,12 @@ function Video() {
   return (
     <div className="Video">
       <Header title="영상 도네이션" channelName={channelName} setChannelName={setChannelName} fetchUnitPrice={fetchUnitPrice}/>
-      <a href="/ranking" target="_blank" rel="noopener noreferrer">
-        <img className="ranking" src="/ranking.png" alt="이미지"/>
-      </a>
+      <div className="menu-line">
+        <a href="/ranking" target="_blank" rel="noopener noreferrer">
+          <img className="ranking" src="/ranking.png" alt="이미지"/>
+        </a>
+        <LiveButton/>
+      </div>
       <div className="content">
         <iframe title="main-content"
                 src={`https://www.youtube.com/embed/${videoId}`}>

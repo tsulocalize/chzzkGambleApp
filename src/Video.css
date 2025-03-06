@@ -85,7 +85,7 @@ a {
 }
 
 .content {
-  height: calc(100vh - 3rem - 64px - 56px);
+  height: calc(100vh - 3rem - 58px - 56px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -123,6 +123,13 @@ a {
 
 .right-content {
   flex-wrap: wrap;
+}
+
+.menu-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
 }
 
 /* Default for larger screens (PC) */
