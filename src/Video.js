@@ -38,20 +38,22 @@ function Video() {
   }
 
   useEffect(() => {
-    // Start the interval when the component mounts
-    const intervalId = setInterval(async () => {
+    const checkVideo = async () => {
       if (channelName !== "") {
         const available = await handleGetVideo();
         if (!available) {
           clearInterval(intervalId);
         }
       }
-    }, 5000); // Run every second (5s)
+    };
 
-    // Clean up the interval when the component unmounts
+    checkVideo(); // 첫 실행
+
+    // 이후 5초마다 실행
+    const intervalId = setInterval(checkVideo, 5000);
+
     return () => clearInterval(intervalId);
-  }, [channelName]); // Empty dependency array ensures the effect runs only once (when the component mounts)
-
+  }, [channelName]);
 
   return (
     <div className="Video">
