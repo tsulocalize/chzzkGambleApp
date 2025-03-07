@@ -77,18 +77,20 @@ font-size: 32px !important;
         </p>
       </div>
     </div>
-      <a
-        className="discord fixed top-0.5 right-4 block h-14 w-28 sm:hidden"
-        href="https://discord.gg/"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <img
-          className="h-14 w-28"
-          src={"/small_logo_blurple_RGB.svg"}
-          alt="Discord Logo"
-        />
-      </a>
+      <div className="hidden sm:block">
+        <a
+          className="discord fixed top-0.5 right-4 h-14 w-28"
+          href="https://discord.gg/48J5u2NVwK"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img
+            className="h-14 w-28"
+            src={"/small_logo_blurple_RGB.svg"}
+            alt="Discord Logo"
+          />
+        </a>
+      </div>
     </div>
   )
     ;
