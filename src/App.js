@@ -3,6 +3,7 @@ import Video from "./Video";
 import Landing from "./Landing";
 import RankingPage from "./RankingPage";
 import RoulettePage from "./RoulettePage";
+import VideoGuide from "./VideoGuide";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/roulette" element={<RoulettePage />} />
         <Route path="/ranking" element={<RankingPage />} />
         <Route path="/video" element={<Video />} />
+        <Route path="/video-guide" element={<VideoGuide />} />
       </Routes>
     </BrowserRouter>
     );
