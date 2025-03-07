@@ -78,7 +78,7 @@ font-size: 32px !important;
       </div>
     </div>
       <a
-        className="discord fixed top-0.5 right-4 block h-14 w-28"
+        className="discord fixed top-0.5 right-4 block h-14 w-28 sm:hidden"
         href="https://discord.gg/"
         target="_blank"
         rel="noreferrer"
