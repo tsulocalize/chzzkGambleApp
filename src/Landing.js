@@ -37,7 +37,7 @@ function Landing() {
 
   return (
     <div>
-      <div className="content-container-landing">
+      <div className="content-container-landing w-[100%]">
         <div className="menu">
           <ContentBox title="도네이션 룰렛" content={formatContent(rouletteContent)} tag="스트리머용" tagColor="#FDEB71"/>
           <GotoButton name="바로가기" onClick={() => handleRedirect('/roulette')}/>

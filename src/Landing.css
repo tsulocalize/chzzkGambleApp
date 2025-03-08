@@ -4,6 +4,8 @@
     align-items: center;
     justify-content: center;
     gap: 150px;
+    overflow: scroll;
+    padding: 20px 0 20px 0;
 }
 
 .menu {
@@ -14,6 +16,7 @@
 
 @media (max-width: 767px) {
     .content-container-landing {
+        justify-content: start;
         flex-direction: column;
         gap: 40px;
     }
