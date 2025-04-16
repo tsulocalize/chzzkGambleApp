@@ -81,7 +81,14 @@ function Video() {
         </div>
       </div>
       <div className="footer">
-        <TipComponent tips={tips} />
+        <a className="termsOfUse"
+           href="https://drive.google.com/file/d/1ONBwWwgnu-mkSAPn9bGqCG72uZs5ra8y/view?usp=sharing"
+           target="_blank"
+           rel="noreferrer"
+        >
+          이용 약관
+        </a>
+        <TipComponent tips={tips}/>
         <a className="discord"
            href="https://discord.gg/48J5u2NVwK"
            target="_blank"

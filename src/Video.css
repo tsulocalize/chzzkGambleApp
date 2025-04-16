@@ -101,6 +101,15 @@ a {
   background-color: #333333;
 }
 
+.termsOfUse {
+  display: inline-block;  /* Makes the <a> element only as wide as its content (the <img>) */
+  position: absolute;
+  color: white;
+  font-weight: 600;
+  left: 20px;
+  bottom: 10px;
+}
+
 .discord {
   display: inline-block;  /* Makes the <a> element only as wide as its content (the <img>) */
   position: absolute;
