@@ -78,7 +78,8 @@ function Video() {
               onToggle={(value) => {
                 setIsHighlighter(!value);
               }} />
-          </div>) : (<div className="right-content">임시로 합쳐놨습니다 (순서가 살짝 꼬일 수 있습니다)</div>)}
+          </div>) : (
+            <div className="toggleContainer">임시로 합쳐놨습니다 (순서가 살짝 꼬일 수 있습니다)</div>)}
           {channelName !== '마레플로스' ? (
           <VideoTable data={videos} setVideoId={setVideoId} unitPrice={unitPrice} isHighlighter={isHighlighter}/>)  : (
           <VideoTable2 data={videos} setVideoId={setVideoId} unitPrice={unitPrice} isHighlighter={isHighlighter}/> )}
