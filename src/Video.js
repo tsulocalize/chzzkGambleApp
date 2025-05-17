@@ -7,6 +7,7 @@ import ToggleButton from 'react-toggle-button';
 import {Header} from "./component/Header";
 import {fetchGetVideoUnitPrice} from "./api/getVideoSetting";
 import LiveButton from "./component/LiveButton";
+import VideoTable2 from "./component/video-table2";
 
 function Video() {
   const [videoId, setVideoId] = useState("");
@@ -69,6 +70,7 @@ function Video() {
                 src={`https://www.youtube.com/embed/${videoId}`}>
         </iframe>
         <div className="right-content">
+          {channelName !== '마레플로스' ? (
           <div className="toggleContainer">
             형광팬
             <ToggleButton
@@ -76,10 +78,13 @@ function Video() {
               onToggle={(value) => {
                 setIsHighlighter(!value);
               }} />
-          </div>
-          <VideoTable data={videos} setVideoId={setVideoId} unitPrice={unitPrice} isHighlighter={isHighlighter}/>
+          </div>) : (<div className="right-content">임시로 합쳐놨습니다 (순서가 살짝 꼬일 수 있습니다)</div>)}
+          {channelName !== '마레플로스' ? (
+          <VideoTable data={videos} setVideoId={setVideoId} unitPrice={unitPrice} isHighlighter={isHighlighter}/>)  : (
+          <VideoTable2 data={videos} setVideoId={setVideoId} unitPrice={unitPrice} isHighlighter={isHighlighter}/> )}
         </div>
       </div>
+      {/*<Advertisement />*/}
       <div className="footer">
         <a className="termsOfUse"
            href="https://drive.google.com/file/d/1ONBwWwgnu-mkSAPn9bGqCG72uZs5ra8y/view?usp=sharing"
