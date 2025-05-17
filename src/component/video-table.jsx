@@ -6,7 +6,7 @@ export default function VideoTable({ data, setVideoId, unitPrice, isHighlighter 
   const [generalSelectedRowIndex, setGeneralSelectedRowIndex] = useState(-1);
   const [highlighterSelectedRowIndex, setHighlighterSelectedRowIndex] = useState(-1);
   const [generalDataLength, setGeneralDataLength] = useState(0);
-  const [highlighterDataLength, sethighlighterDataLength] = useState(0);
+  const [highlighterDataLength, setHighlighterDataLength] = useState(0);
   const generalData = data.general || []; // []
   const highlighterData = data.highlighter || []; // []
 
@@ -49,7 +49,7 @@ export default function VideoTable({ data, setVideoId, unitPrice, isHighlighter 
       setGeneralDataLength(generalData.length);
     } else {
       setHighlighterSelectedRowIndex(highlighterSelectedRowIndex + highlighterData.length - highlighterDataLength);
-      sethighlighterDataLength(highlighterData.length);
+      setHighlighterDataLength(highlighterData.length);
     }
 
   }, [isHighlighter, generalSelectedRowIndex, highlighterSelectedRowIndex, generalDataLength, highlighterDataLength, generalData, highlighterData]);
