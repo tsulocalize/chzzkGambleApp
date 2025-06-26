@@ -12,6 +12,7 @@ function Video() {
   const [videoId, setVideoId] = useState("");
   const [videos, setVideos] = useState([]);
   const [channelName, setChannelName] = useState("");
+  const [channelId, setChannelId] = useState("");
   const [unitPrice, setUnitPrice] = useState(null);
   const [isHighlighter, setIsHighlighter] = useState(false);
   const [tips, setTips] = useState([
@@ -24,7 +25,7 @@ function Video() {
   const [clickedChannel, setClickedChannel] = useState("");
 
   const handleGetVideo = async () => {
-    const result = await fetchGetVideoDonation(channelName);
+    const result = await fetchGetVideoDonation(channelId);
     if (typeof result === 'undefined') return false;
     setVideos(result);
     return true;
@@ -39,7 +40,7 @@ function Video() {
 
   useEffect(() => {
     const checkVideo = async () => {
-      if (channelName !== "") {
+      if (channelId !== "") {
         const available = await handleGetVideo();
         if (!available) {
           clearInterval(intervalId);
@@ -57,7 +58,7 @@ function Video() {
 
   return (
     <div className="Video">
-      <Header title="영상 도네이션" channelName={channelName} setChannelName={setChannelName} fetchUnitPrice={fetchUnitPrice} clickedChannel={clickedChannel}/>
+      <Header title="영상 도네이션" channelId={channelId} setChannelId={setChannelId} channelName={channelName} setChannelName={setChannelName} fetchUnitPrice={fetchUnitPrice} clickedChannel={clickedChannel}/>
       <div className="menu-line">
         <a href="/ranking" target="_blank" rel="noopener noreferrer">
           <img className="ranking" src="/ranking.png" alt="이미지"/>
@@ -66,6 +67,7 @@ function Video() {
       </div>
       <div className="content">
         <iframe title="main-content"
+                key={videoId}
                 src={`https://www.youtube.com/embed/${videoId}`}>
         </iframe>
         <div className="right-content">

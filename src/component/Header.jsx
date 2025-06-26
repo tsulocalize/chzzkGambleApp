@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import {fetchConnection} from "../api/connectRequest";
 import styles from "./Header.module.css";
 
-export function Header({ title, channelName, setChannelName, fetchUnitPrice, clickedChannel }) {
+export function Header({ title, channelName, setChannelName, setChannelId, fetchUnitPrice, clickedChannel }) {
   const [inputChannelName, setInputChannelName] = useState("");
   const [channelImageUrl, setChannelImageUrl] = useState(
     process.env.PUBLIC_URL + "/user.png"
@@ -24,6 +24,7 @@ export function Header({ title, channelName, setChannelName, fetchUnitPrice, cli
   const handleConnect = async () => {
     fetchConnection(inputChannelName)
       .then(result => {
+        setChannelId(result.channelId);
         setChannelName(result.channelName);
         setChannelImageUrl(result.channelImageUrl);
         fetchUnitPrice(result.channelId);
