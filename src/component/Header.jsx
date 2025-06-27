@@ -39,6 +39,7 @@ export function Header({ title, channelName, setChannelName, setChannelId, fetch
     }
     fetchConnection(clickedChannel)
       .then(result => {
+        setChannelId(result.channelId);
         setChannelName(result.channelName);
         setChannelImageUrl(result.channelImageUrl);
         fetchUnitPrice(result.channelId);
