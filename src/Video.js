@@ -63,7 +63,7 @@ function Video() {
         </div>
 
 
-        <Header title="영상 도네이션" channelId={channelId} setChannelId={setChannelId} channelName={channelName} connected={connected} setConnected={setConnected} setChannelName={setChannelName} fetchUnitPrice={fetchUnitPrice} clickedChannel={clickedChannel}/>
+        <Header title="영상 도네이션" channelId={channelId} setChannelId={setChannelId} channelName={channelName} setChannelName={setChannelName} fetchUnitPrice={fetchUnitPrice} clickedChannel={clickedChannel}/>
       <div className="menu-line">
         <a href="/ranking" target="_blank" rel="noopener noreferrer">
           <img className="ranking" src="/ranking.png" alt="이미지"/>
