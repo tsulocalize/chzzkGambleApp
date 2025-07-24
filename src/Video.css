@@ -159,6 +159,9 @@ a {
   .footer {
     display: none;
   }
+  .ad {
+    display: none;
+  }
 }
 
 /* For mobile and smaller screens */

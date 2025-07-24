@@ -58,7 +58,12 @@ function Video() {
 
   return (
     <div className="Video">
-      <Header title="영상 도네이션" channelId={channelId} setChannelId={setChannelId} channelName={channelName} setChannelName={setChannelName} fetchUnitPrice={fetchUnitPrice} clickedChannel={clickedChannel}/>
+        <div className="ad" style={{position: "fixed", top: "50%", right: "3%", transform: "translateY(-50%)", width: "150px", cursor: "pointer", border: "1px solid gray"}} onClick={() => window.open("https://chzzk.naver.com/live/2fab1ff9fb326824d71de66e26fede7f", "_blank")}>
+          <img src={"/ad.png"} alt={""}/>
+        </div>
+
+
+        <Header title="영상 도네이션" channelId={channelId} setChannelId={setChannelId} channelName={channelName} connected={connected} setConnected={setConnected} setChannelName={setChannelName} fetchUnitPrice={fetchUnitPrice} clickedChannel={clickedChannel}/>
       <div className="menu-line">
         <a href="/ranking" target="_blank" rel="noopener noreferrer">
           <img className="ranking" src="/ranking.png" alt="이미지"/>
