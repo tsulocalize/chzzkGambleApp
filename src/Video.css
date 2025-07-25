@@ -45,10 +45,6 @@ a {
   color: #61dafb;
 }
 
-.ad {
-  display: none;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
