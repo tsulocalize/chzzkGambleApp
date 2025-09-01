@@ -2,8 +2,9 @@ import Button from "./Button";
 import React, {useEffect, useState} from "react";
 import {fetchConnection} from "../api/connectRequest";
 import styles from "./Header.module.css";
+import {fetchChannelInfo} from "../api/getChannelInfo";
 
-export function Header({ title, channelName, setChannelName, setChannelId, fetchUnitPrice, clickedChannel }) {
+export function Header({ title, channelName, setChannelName, connected, setConnected, setChannelId, fetchUnitPrice, clickedChannel }) {
   const [inputChannelName, setInputChannelName] = useState("");
   const [channelImageUrl, setChannelImageUrl] = useState(
     process.env.PUBLIC_URL + "/user.png"
@@ -22,13 +23,19 @@ export function Header({ title, channelName, setChannelName, setChannelId, fetch
   }
 
   const handleConnect = async () => {
-    fetchConnection(inputChannelName)
+    fetchChannelInfo(inputChannelName)
       .then(result => {
         setChannelId(result.channelId);
         setChannelName(result.channelName);
         setChannelImageUrl(result.channelImageUrl);
-        fetchUnitPrice(result.channelId);
-      }).catch((error) => {
+        return result;
+    }).then(result => {
+      fetchConnection(result.channelId, result.channelName)
+        .then(isConnected => {
+          setConnected(isConnected);
+        })
+      fetchUnitPrice(result.channelId);
+    }).catch((error) => {
       console.error(error);
     });
   };

@@ -13,6 +13,7 @@ function Video() {
   const [videos, setVideos] = useState([]);
   const [channelName, setChannelName] = useState("");
   const [channelId, setChannelId] = useState("");
+  const [connected, setConnected] = useState(false);
   const [unitPrice, setUnitPrice] = useState(null);
   const [isHighlighter, setIsHighlighter] = useState(false);
   const [tips, setTips] = useState([
@@ -40,7 +41,7 @@ function Video() {
 
   useEffect(() => {
     const checkVideo = async () => {
-      if (channelId !== "") {
+      if (channelId !== "" && connected) {
         const available = await handleGetVideo();
         if (!available) {
           clearInterval(intervalId);
@@ -54,7 +55,7 @@ function Video() {
     const intervalId = setInterval(checkVideo, 5000);
 
     return () => clearInterval(intervalId);
-  }, [channelName]);
+  }, [channelId, connected]);
 
   return (
     <div className="Video">
